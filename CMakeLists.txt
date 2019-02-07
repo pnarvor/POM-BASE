@@ -49,7 +49,10 @@ if(USE_ENVIRE_MINIMAL)
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/>
     )
 
-    target_compile_definitions(${PROJECT_NAME} PRIVATE USE_ENVIRE_MINIMAL)
+    target_compile_definitions(${PROJECT_NAME} PUBLIC USE_ENVIRE_MINIMAL)
+
+    set(USE_ENVIRE_MINIMAL_DEFINITION "-DUSE_ENVIRE_MINIMAL")
+    set(ENVIRE_TO_USE "infuse_envire")
 
 else()
 
@@ -97,6 +100,7 @@ else()
     target_include_directories(${PROJECT_NAME} PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/>
     )
+    set(ENVIRE_TO_USE "envire_core")
 
 endif()
 
